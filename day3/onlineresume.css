@@ -1,18 +1,41 @@
 body{
     text-indent:50px;
+    background: #ffffff url('./打坐.jpg') no-repeat 50% 100px;
+  }
+  h4{
+    font-size: larger;
   }
   .header{
     text-align:center;
-    color:red;
+    color:rgb(225, 246, 177);
+    border: #7ed2f3 dotted thick;
+  }
+  .stitle{
+    font-size: larger;
+    color: rgba(235, 113, 14, 0.466);
   }
   ul{
     font-family:sans-serif;
     font-style:italic;
+    list-style: square ;
   }
   .name{
     text-decoration:underline;
   }
-  a{
-    
+  .xueli{
     text-shadow:5px 5px 5px;
+  }
+  a:link{
+    text-decoration: none;
+    color:rgb(128, 230, 255);
+  }
+  a:visited{
+    text-decoration: none;
+    color:rgb(74, 248, 98);
+  }
+  a:hover{
+    text-decoration: underline;
+  }
+  a:active{
+    font-size:125%;
   }
