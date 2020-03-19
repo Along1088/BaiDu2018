@@ -1,0 +1,24 @@
+body {
+    width: 96%;
+}
+
+h1 {
+    height: 100px;
+    width: 100%;
+    line-height: 100px;
+    padding-left: 50px;
+    color: #fff;
+    background: rgba(191, 192, 194, 0.877);
+}
+h2 {
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+    border: solid #fff 1px;
+    text-align: center;
+    line-height: 200px;
+    background: #ccc;
+}
+
+
+

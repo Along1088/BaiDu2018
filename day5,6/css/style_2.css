@@ -1,0 +1,35 @@
+body {
+    width: 96%;
+    margin: 0 aotu;
+}
+
+.header {
+    float: left;
+    height: 1000px;
+    width: 20%;
+    background: #57a5c9;
+}
+
+h1{
+    padding: 5%;
+    text-align: center;
+}
+
+.content {
+    float: right;
+    width: 76%;
+}
+
+.basic {
+    width: 10%;
+    float: left;
+}
+
+.lianxi {
+    width: 20%;
+    float: left;
+}
+
+.clear {
+    clear: both;
+}

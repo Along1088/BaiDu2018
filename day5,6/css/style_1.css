@@ -1,0 +1,16 @@
+body{
+    width: 98%;
+    margin:0 aotu;
+}
+.basic{
+    width: 10%;
+    float: left;
+}
+
+.lianxi{
+    width:15%;
+    float: left;
+}
+.clear{
+    clear: both;
+}
