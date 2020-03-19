@@ -1,35 +1,27 @@
-body {
-    width: 96%;
-    margin: 0 aotu;
+*{
+    padding: 0;
+    margin: 0;
 }
-
-.header {
+.resume {
     float: left;
-    height: 1000px;
-    width: 20%;
-    background: #57a5c9;
-}
-
-h1{
-    padding: 5%;
+    width: 250px;
+    height: 600px;
+    margin-right: 50px;
     text-align: center;
+    padding-top: 50px;
+    color:#fff;
+    background-color: rgb(152, 215, 245);
 }
 
-.content {
-    float: right;
-    width: 76%;
-}
-
-.basic {
-    width: 10%;
+.inline-information div {
     float: left;
+    margin-right: 20px;
+}
+.inline-information {
+    height: 40px;
+}
+.information span {
+    display: block;
+    height: 40px;
 }
 
-.lianxi {
-    width: 20%;
-    float: left;
-}
-
-.clear {
-    clear: both;
-}

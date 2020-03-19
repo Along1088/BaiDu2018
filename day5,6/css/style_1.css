@@ -1,16 +1,11 @@
-body{
-    width: 98%;
-    margin:0 aotu;
-}
-.basic{
-    width: 10%;
+.inline-information div {
     float: left;
+    margin-right: 20px;
 }
-
-.lianxi{
-    width:15%;
-    float: left;
+.inline-information{
+    height: 40px;
 }
-.clear{
-    clear: both;
+.information span{
+    display: block;
+    height: 40px;
 }
