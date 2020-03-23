@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>两栏右侧固定左侧自适应</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0
+    }
+
+    #right {
+        position: absolute;
+        right: 0;
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+    }
+
+    #left {
+        height: 200px;
+        margin-right: 200px;
+        background-color: red;
+    }
+</style>
+
+<body>
+    <div id="right">right</div>
+    <div id="left">left</div>
+</body>
+
+</html>

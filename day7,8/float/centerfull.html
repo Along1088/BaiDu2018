@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Float三栏自适应布局</title>
+    <style>
+        html,body{
+            height: 100%;
+            margin:0;
+        }
+        #wrap {
+            float: left;
+            width: 100%;
+            height: 100%;
+        }
+        #center {
+            margin: 0 210px;
+            height: 100%;
+            background: yellow;
+        }
+        #left {
+            float: left;
+            width: 200px;
+            height: 100%;
+            margin-left: -100%;
+            background: #ccc;
+        }
+
+        #right {
+            float: left;
+            width: 200px;
+            height: 100%;
+            margin-left: -200px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="center">cneter</div>
+    </div>
+    <div id="left">左边栏</div>
+    <div id="right">右边栏</div>
+</body>
+
+</html>

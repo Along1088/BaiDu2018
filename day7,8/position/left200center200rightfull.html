@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>三栏布局左右固定中间自适应</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    #left ,#center{
+        position: absolute;
+        height: 200px;
+        width: 200px;
+    }
+    #left {
+        left: 0;
+        background-color: #ccc;
+    }
+    #right {
+        margin-left: 400px;
+        height: 200px;
+        background-color:red;
+
+    }
+    #center {
+        margin-left:200px;
+        background:blue;
+    }
+
+</style>
+<body>
+    <div id="left">left</div>
+    <div id="center">center</div>
+    <div id="right">right</div>
+</body>
+</html>
