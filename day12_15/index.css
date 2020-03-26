@@ -24,14 +24,14 @@ body {
     background: #1d2531;
 }
 #left-2 {
+    overflow: hidden;
     width: 250px;
     height: 100%;
-    margin-left: 100px;
     background: #222c3c;  
 }
 #white {
+    overflow: hidden;
     height: 100%;
-    margin-left: 350px;
 }
 #top {
     height: 80px;
@@ -44,7 +44,7 @@ body {
     background: red;
 } 
 #chat {
-    margin-left: 400px;
+    overflow: hidden;
     height: calc( 100% - 80px);
     background: blue;
 }
