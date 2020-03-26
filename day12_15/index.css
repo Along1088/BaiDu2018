@@ -1,0 +1,50 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+#black {
+    float: left;
+    height: 100%;
+    width: 350px;
+}
+#left-1 {
+    float: left;
+    width: 100px;
+    height: 100%;
+    background: #1d2531;
+}
+#left-2 {
+    width: 250px;
+    height: 100%;
+    margin-left: 100px;
+    background: #222c3c;  
+}
+#white {
+    height: 100%;
+    margin-left: 350px;
+}
+#top {
+    height: 80px;
+    background: yellow;
+}
+#messagelist {
+    float: left;
+    width: 400px;
+    height: calc( 100% - 80px);
+    background: red;
+} 
+#chat {
+    margin-left: 400px;
+    height: calc( 100% - 80px);
+    background: blue;
+}
