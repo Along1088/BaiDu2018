@@ -1,0 +1,37 @@
+{
+  "id": "1714174",
+  "name": "漂亮的网站",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "10746991",
+      "name": "google+",
+      "font_class": "google",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "1239416",
+      "name": "twitter",
+      "font_class": "twitter",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "1239419",
+      "name": "facebook",
+      "font_class": "facebook",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "6626176",
+      "name": "Instagram",
+      "font_class": "Instagram",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    }
+  ]
+}
