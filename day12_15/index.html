@@ -9,19 +9,245 @@
     <link rel="stylesheet" href="./index.css">
 </head>
 
-<body class="clearfix">
+<body>
     <div id="black" class="clearfix">
         <div id="left-1">
-
+            <img src="imgs/Item 1.png" alt="icon">
+            <img src="imgs/Item 2.png" alt="icon">
+            <img src="imgs/Item 3.png" alt="icon">
+            <img src="imgs/Add App.png" alt="icon">
+            <img src="imgs/Grid.png" alt="icon">
+            <img src="imgs/Settings.png" alt="icon">
         </div>
         <div id="left-2">
-
+            <ul>
+                <p>MENU<img src="imgs/Settings.png" alt="icon"></p>
+                <li>Overview</li>
+                <li>Sales<img src="imgs/Notification.png" alt="icon" id="msg_num"></li>
+                <li>Your Staff</li>
+                <li>Analytics & Targeting</li>
+                <li>What's New</li>
+            </ul>
+            <ul>
+                <p>Your Products<img src="imgs/Settings.png" alt="icon"></p>
+                <li><img src="imgs/Book of Wisdom.png" alt="icon" class="item_icon">Books</li>
+                <li><img src="imgs/Video Camera.png" alt="icon" class="item_icon">Tutorials</li>
+                <li><img src="imgs/Painting.png" alt="icon" class="item_icon">Stocks</li>
+                <li><img src="imgs/Chart.png" alt="icon" class="item_icon">Infographics</li>
+            </ul>
+            <ul>
+                <p>DASHBOARD<img src="imgs/Settings.png" alt="icon"></p>
+                <li id="special">Messages<img src="imgs/Notification-2.png" alt="icon" id="msg_num"></li>
+                <li>Connections</li>
+                <li>Integrations<img src="imgs/Alert Icon.png" alt="icon" id="msg_num"></li>
+                <li>Account Settings</li>
+                <li>App Settings</li>
+            </ul>
+            <div id="monthgoals">
+                <span>Monthly Goals</span>
+                <span>$580/$3200</span>
+                <img src="imgs/Server Capacity.png" alt="icon">
+            </div>
         </div>
     </div>
     <div id="white" class="clearfix">
-        <div id="top"></div>
-        <div id="messagelist"></div>
-        <div id="chat"></div>
+        <div id="top">
+            <h2>Messages</h2>
+            <div class="profile clearfix">
+                <img src="imgs/Photo.png" alt="pic">
+                <img src="imgs/dropdown.png" alt="icon">
+                <div>Jordan J.</div>
+                <div>Administrator</div>
+            </div>
+        </div>
+        <div id="messagelist">
+            <div id="searchinput">
+                <img src="imgs/Search icon.png" alt="">
+                <input type="text" placeholder="Search">
+            </div>
+            <ul>
+                <li class="person">
+                    <img src="imgs/Avatar photo.png" alt="pic">
+                    <div class="name">
+                        <img src="imgs/Status.png" alt="status">
+                        Bessie Berry
+                        <span>3m</span>
+                    </div>
+                    <div class="social">Twitter</div>
+                    <img src="imgs/Notification-3.png" alt="icon" class="four">
+                    <div class='msg'>
+                        I pay for the 4Mb/sec down, 512 Kb/sec up service from O2. In fact, it's relatively quick, and
+                        stable...
+                    </div>
+                </li>
+                <li class="person">
+                    <img src="imgs/Avatar photo-2.png" alt="pic">
+                    <div id="name">
+                        Victor Weber
+                        <span>8m</span>
+                    </div>
+                    <div class="social">Adobe</div>
+                    <div class='msg'>
+                        I shared this on my fb wall a few months back, and I thought I'd share it here agarin because
+                        it's such a great...
+                    </div>
+                </li>
+                <li class="person">
+                    <img src="imgs/Avatar photo-3.png" alt="pic">
+                    <div id="name">
+                        Dustin Benson
+                        <span>Yesterday</span>
+                    </div>
+                    <div class="social">Facebook</div>
+                    <div class='msg'>
+                        If there is anyone who needs an invitation please add yourself in the comments of this post!
+                    </div>
+                </li>
+                <li class="person">
+                    <img src="imgs/Avatar photo-4.png" alt="pic">
+                    <div id="name">
+                        Jack Mason
+                        <span>Yesterday</span>
+                    </div>
+                    <div class="social">Yahoo</div>
+                    <div class='msg'>
+                        BruteDC is a peer-to-peer movie+tv series sharing and downloading platform which works on
+                        intranet inside...
+                    </div>
+                </li>
+                <li class="person">
+                    <img src="imgs/Avatar photo-5.png" alt="pic">
+                    <div id="name">
+                        Stephen Shelton
+                        <span>13 Jun</span>
+                    </div>
+                    <div class="social">Snapchat</div>
+                    <div class='msg'>
+                        Yes, p2p traffic is often filtered (QoSed). Although i do use BT on O2 wires, and in good days
+                        dl speed...
+                    </div>
+                </li>
+                <li class="person">
+                    <img src="imgs/Avatar photo-6.png" alt="pic">
+                    <div id="name">
+                        Sally Wills
+                        <span>12 Jun</span>
+                    </div>
+                    <div class="social">Twitter</div>
+                    <div class='msg'>
+                        Yes, it's O2: 'internet extreme', which is no longer offered.
+                    </div>
+                </li>
+                <li class="person">
+                    <img src="imgs/Avatar photo-7.png" alt="pic">
+                    <div id="name">
+                        Robert Patton
+                        <span>9 Jun</span>
+                    </div>
+                    <div class="social">A Team</div>
+                    <div class='msg'>
+                        I change my service from this 4Mb plan to their much cheaper 8M pan to their much
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="chat">
+            <div id="chat-top" class="clearfix">
+                <div id="pages">
+                    <img src="imgs/Arrow left.png" alt="icon">
+                    <img src="imgs/Arrow right.png" alt="icon">
+                </div>
+                <div id="total">1 of 28</div>
+                <div id="tools">
+                    <img src="imgs/User icon.png" alt="icon">
+                    <img src="imgs/Upload icon.png" alt="icon">
+                    <img src="imgs/Trash icon.png" alt="icon">
+                </div>
+                <h3>Bessie Berry<img src="imgs/Status-2.png"></h3>
+            </div>
+            <ul id="chat-content">
+                <li class="content clearfix">
+                    <img src="imgs/Avatar photo.png" alt="pic" class="administrator">
+                    <div class="name">
+                        <span>Bessie Berry</span>
+                        <span>8:31 AM</span>
+                        <div class='msg'>
+                            Hi guys Ive got the O2 package and have really slow internet. A speed check online said i
+                            can get 3mbps but it seems more like 0.5 these days, just frezing and taking ages to open
+                            pages and open audio files for examples. I have decided to witch to the UPC packge which
+                            offers 10mbps but do you think i will get it?
+                        </div>
+                    </div>
+                </li>
+                <li class="content clearfix">
+                    <img src="imgs/Avatar photo-8.png" alt="pic" class="administrator">
+                    <div class="name">
+                        <span>Jordan Jackson</span>
+                        <span>8:31 AM</span>
+                        <div class='msg'>
+                            I have internet for 9 month and never couled Ive got the O2 package and have really slow
+                            internet. A speed check online said i
+                            can get 3mbps but it seems more like 0.5 these days, just frezing and taking ages to open
+                            pages and open audio files for examples. I have decided to witch to the UPC packge which
+                            offers 10mbps but do you think i will get it? I never had 400KB/s on whenever downloadding
+                            from p2p sharing in my sutuation all my internet speed slows to 512KBit/s. here in 9 month
+                            never had this luck.
+                        </div>
+                    </div>
+                </li>
+                <div class="line"><span>Tuesrday</span></div>
+                <li class="content clearfix">
+                    <img src="imgs/Avatar photo.png" alt="pic" class="administrator">
+                    <div class="name">
+                        <span>Bessie Berry</span>
+                        <span>8:31 AM</span>
+                        <div class='msg'>
+                            Funny conparison.so would the proper anticirus not slow down the internet as much or do you
+                            mean a freeble doens protect the computer from viruses?
+                        </div>
+                    </div>
+                </li>
+                <li class="content clearfix">
+                    <img src="imgs/Avatar photo-8.png" alt="pic" class="administrator">
+                    <div class="name">
+                        <span>Jordan Jackson</span>
+                        <span>8:31 AM</span>
+                        <div class='msg'>
+                            I pay for the 4Mb/sec down, 512 Kb/sec up service from O2, and for 9 month and never couled
+                            Ive got the O2 package and have really slow internet. A speed check online said i can get
+                            3mbps but it seems more like 0.5 these days, just frezing and taking ages to open
+                            pages and open audio files for examples. I have decided to witch to the UPC packge which
+                            offers 10mbps but do you think i will get it? I never had 400KB/s on whenever downloadding
+                            from p2p sharing in my sutuation all my internet speed slows to 512KBit/s. here in 9 month
+                            never had this luck.
+                            <div>
+                                <img src="imgs/Photo 1.png" alt="pic">
+                                <img src="imgs/Photo 2.png" alt="pic">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <div class="line"><span>New Messages</span></div>
+                <li class="content clearfix">
+                    <img src="imgs/Avatar photo.png" alt="pic" class="administrator">
+                    <div class="name">
+                        <span>Bessie Berry</span>
+                        <span>8:31 AM</span>
+                        <div class='msg'>
+                            I pay for the 4Mb/sec down, 512 Kb/sec up service from O2. In fact, it's relatively quick,
+                            and stable.It's not perfect, but i really don't have issues, as long as i keep track of I'm
+                            doing on it.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div id="writemsg" class="clearfix">
+                <img src="imgs/Add a file icon.png" alt="icon">
+                <div class="wrap">
+                    <input type="text" value="Well, kinda both :) but more of that second option, i`ve seen m">
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
