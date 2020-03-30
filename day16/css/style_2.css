@@ -1,0 +1,27 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.resume {
+    float: left;
+    width: 250px;
+    height: 600px;
+    margin-right: 50px;
+    text-align: center;
+    padding-top: 50px;
+    color:#fff;
+    background-color: rgb(152, 215, 245);
+}
+
+.inline-information div {
+    float: left;
+    margin-right: 20px;
+}
+.inline-information {
+    height: 40px;
+}
+.information span {
+    display: block;
+    height: 40px;
+}
+

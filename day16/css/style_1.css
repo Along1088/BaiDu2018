@@ -1,0 +1,11 @@
+.inline-information div {
+    float: left;
+    margin-right: 20px;
+}
+.inline-information{
+    height: 40px;
+}
+.information span{
+    display: block;
+    height: 40px;
+}

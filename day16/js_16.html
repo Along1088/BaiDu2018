@@ -14,7 +14,9 @@
     <p id="result">运算结果</p>
     <script>
         document.getElementById("add-btn").onclick=function(){
-            document.getElementById("result").innerHTML = document.getElementById("first-number").value + document.getElementById("second-number").value
+            var x = Number(document.getElementById("first-number").value); 
+            var y = Number(document.getElementById("second-number").value);
+            document.getElementById("result").innerHTML = x + y 
         }
         document.getElementById("minus-btn").onclick=function(){
             document.getElementById("result").innerHTML = document.getElementById("first-number").value - document.getElementById("second-number").value
