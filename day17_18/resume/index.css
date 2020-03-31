@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.resume {
+    height:80px;
+    width: 960px;
+    background-color: rgb(116, 116, 116);
+}
+h1{
+    padding-left: 20px;
+    padding-top: 20px;
+    color: #fff;
+}
+.basic-info,
+.ways,
+.ability,
+.education,
+.experience {
+    height: 100px;
+    width: 960px;
+}
+.title {
+    float: left;
+    box-sizing: border-box;
+    height: 100px;
+    width: 100px;
+    border: #fff solid 1px;
+    text-align: center;
+    line-height: 100px;
+    font-size: 12px;
+    background-color: #ccc;
+}
+.inline-information,
+.information {
+    box-sizing: border-box;
+    height: 100px;
+    padding-top: 15px;
+    padding-left: 110px;
+    border-bottom: #ccc solid 1px;
+    border-right: #ccc solid 1px;
+}
+.inline-information div{
+    float: left;
+    margin-right: 25px;
+}

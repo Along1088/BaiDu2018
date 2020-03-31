@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>10进制转2进制</title>
+</head>
+
+<body>
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <input id="bin-bit" type="number" placeholder="请输入二进制数的位数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result">运算结果</p>
+    <script>
+        // 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
+        function dec2bin(decNumber, bit) {
+            if (decNumber < 0) {
+                console.log("请输入一个非负数")
+            }
+            let arr = [];
+            while (decNumber > 0) {
+                arr.push(decNumber % 2);
+                decNumber = parseInt(decNumber / 2)
+            }
+            // 新的需求是，转化显示后的二进制数为bin-bit中输入的数字宽度，例如
+            // dec-number为5，bin-bit为5，则转化后数字为00101
+            // 如果bin-bit小于转化后的二进制本身位数，则使用原本的位数，如dec-number为5，bin-bit为2，依然输出101，但同时在console中报个错
+            while (arr.length < bit) {
+                arr.push(0);
+            }
+            try {
+                if (arr.length > bit) {
+                    throw "位数错误"
+                }
+            } catch (error) {
+                console.log(error);
+            }
+            let resArr = arr.reverse();
+            let x = "";
+            for (let i = 0; i < resArr.length; i++) {
+                x += resArr[i];
+            }
+            return x;
+        }
+
+
+        // 实现党点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
+        // Some coding
+        document.getElementById("trans-btn").onclick = function () {
+            let x = document.getElementById("dec-number").value
+            let y = document.getElementById("bin-bit").value
+            document.getElementById("result").innerHTML = dec2bin(x, y)
+        }
+    </script>
+</body>
+
+</html>
