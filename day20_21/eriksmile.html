@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>笑容</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <h2>纸上得来终觉浅<br>绝知此事要躬行</h2>
+        <p>我们精心设计了许多编码任务<br>让你可以循序渐进、由浅入深<br>地在实践中掌握技术</p>
+        <div id="erik"></div>
+    </div>
+</body>
+<script>
+    let div = document.getElementById("erik")
+    let y = 0;
+    function picRollUp() {
+        div.style.backgroundPositionY = y + "px";
+        let t = setTimeout("picRollUp()", 100);
+        y -= 480;
+        if (y <= -8160) {
+            clearTimeout(t);
+            picRollDown();
+        }
+    }
+    function picRollDown() {
+        y += 480;
+        div.style.backgroundPositionY = y + "px";
+        t = setTimeout("picRollDown()", 100);
+        if (y >= 0) {
+            clearTimeout(t);
+            picRollUp();
+        }
+    }
+    picRollUp();
+
+</script>
+
+</html>
