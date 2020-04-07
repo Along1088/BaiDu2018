@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="stack-input" type="text">
+    <p id="stack-cont">栈内容：applelt;-pear</p>
+    <button id="push-btn">进栈</button>
+    <button id="pop-btn">退栈</button>
+    <button id="font-btn">打印栈顶元素内容</button>
+    <button id="empty-btn">判断栈是否为空</button>
+
+    <script>
+        var stack = ["apple", "pear"];
+        let input = document.getElementById("stack-input");
+        let p = document.getElementById("stack-cont");
+        let pushBtn = document.getElementById("push-btn");
+        let popBtn = document.getElementById("pop-btn");
+        let print = document.getElementById("font-btn");
+        let isEmpty = document.getElementById("empty-btn");
+        pushBtn.onclick = function () {
+            stack.unshift(input.value);
+            p.innerHTML = stack.join("<-");
+        }
+        popBtn.onclick = function () {
+            stack.shift();
+            p.innerHTML = stack.join("<-")
+        }
+        print.onclick = function () {
+            console.log(stack[0]);
+        }
+        isEmpty.onclick = function () {
+            if (stack.length == 0) {
+                console.log("栈内容为空");
+            }else{
+                console.log("栈内容不为空");
+            }
+        }
+    </script>
+</body>
+
+</html>
