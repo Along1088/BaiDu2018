@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body onload="main()">
+    <select id="year-select">
+        <option value="2000">2000</option>
+        <option value="2001">2001</option>
+        <option value="2002">2002</option>
+        ……
+        <option value="2032">2032</option>
+    </select>
+
+    <select id="month-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        ……
+        <option value="12">12</option>
+    </select>
+
+    <select id="day-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        ……
+        <option value="31">31</option>
+    </select>
+
+    <select id="hour-select">
+        <option value="0">00</option>
+        <option value="1">01</option>
+        ……
+        <option value="23">23</option>
+    </select>
+
+    <select id="minite-select">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        ……
+        <option>59</option>
+    </select>
+
+    <select id="second-select">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        ……
+        <option>59</option>
+    </select>
+
+    <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+    <script>
+        let year = document.getElementById("year-select");
+        let month = document.getElementById("month-select");
+        let date = document.getElementById("day-select");
+        let hour = document.getElementById("hour-select");
+        let minite = document.getElementById("minite-select");
+        let second = document.getElementById("second-select");
+        let p = document.getElementById("result-wrapper");
+
+        function main() {
+            let yearValue = year.options[year.selectedIndex].value;
+            let monthValue = month.options[month.selectedIndex].value;
+            let dateValue = date.options[date.selectedIndex].value;
+            let hourValue = hour.options[hour.selectedIndex].value;
+            let miniteValue = minite.options[minite.selectedIndex].value;
+            let secondValue = second.options[second.selectedIndex].value;
+            let now = new Date();
+            let nowYear = now.getFullYear();
+            let nowMonth = now.getMonth();
+            let nowDate = now.getDate();
+            let nowDay = now.getDay();
+            let nowHour = now.getHours();
+            let nowMinite = now.getMinutes();
+            let nowSecond = now.getSeconds();
+            let s1 = Date.UTC(nowYear, nowMonth, nowDate, nowHour, nowMinite, nowSecond);
+            let s2 = Date.UTC(yearValue, monthValue, dateValue, hourValue, miniteValue, secondValue);
+            p.innerHTML = outputFormat(yearValue, monthValue, dateValue, weekDay(yearValue, monthValue, dateValue), hourValue, miniteValue, secondValue) +
+                count(s1, s2);
+            setTimeout("main()", 100);
+        }
+        function weekDay(a, b, c) {
+            let arr = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            let i = new Date(a + "-" + b + "-" + c).getDay();
+            return arr[i];
+        }
+        function count(a, b) {
+            let d = Math.floor((a - b) / 1000 / 60 / 60 / 24);
+            let h = Math.floor(((a - b) / 1000 / 60 / 60) % 24);
+            let m = Math.floor(((a - b) / 1000 / 60) % 60);
+            let s = Math.floor((a - b) / 1000 % 60);
+            if (a > b) {
+                return "已经过去" + d + "天" + h + "小时" + m + "分" + s + "秒";
+            } else {
+                return "还有" + -d + "天" + -h + "小时" + -m + "分" + -s + "秒";
+            }
+        }
+        function outputFormat(a, b, c, d, e, f, g) {
+            let str = "现在距离" + a + "年" + b + "月" + c + "日" + d + " " + e + ":" + f + ":" + g;
+            return str;
+        }
+    </script>
+
+</body>
+
+</html>

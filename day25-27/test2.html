@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body onload="startTime()">
+    <div id="txt"></div>
+    <script>
+        function startTime() {
+            let today = new Date();
+            let year = today.getFullYear();
+            let month = checkTime(today.getMonth() + 1);
+            let date = checkTime(today.getDate());
+            let day = today.getDay();
+            let h = checkTime(today.getHours());
+            let m = checkTime(today.getMinutes());
+            let s = checkTime(today.getSeconds());
+            document.querySelector("#txt").innerHTML =
+                wrap(year, month, date, checkDay(day), h, m, s) + checkPart(h) + "<br>" +
+                wrap1(year, month, date, checkDay1(day), h, m, s);
+            setTimeout("startTime()", 500)
+        }
+
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i
+        }
+        function checkDay(i) {
+            let arr = ['Sunday', 'Monday', 'Tuesday', 'Thusday', 'Wensday', 'Friday', 'Saturday'];
+            return arr[i];
+        }
+        function checkDay1(i) {
+            let arr = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            return arr[i]
+        }
+        function checkPart(i) {
+            if (i < 12) {
+                return ("AM");
+
+            } else {
+                return ("PM");
+            }
+        }
+        function wrap(a, b, c, d, e, f, g) {
+            let clock = a + "-" + b + "-" + c + " " + d + " " + e + ":" + f + ":" + g + " ";
+            return clock;
+        }
+        function wrap1(a, b, c, d, e, f, g) {
+            let clock = a + "年" + b + "月" + c + "日" + d + " " + e + ":" + f + ":" + g + " ";
+            return clock;
+        }
+    </script>
+</body>
+
+</html>
