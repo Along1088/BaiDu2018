@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .wrapper {
+            padding: 20px;
+        }
+
+        #email-input {
+            width: 250px;
+            height: 30px;
+            padding-left: 10px;
+        }
+
+        .email-sug {
+            width: 250px;
+            margin: 0;
+            padding: 0;
+            border: 2px solid rgb(205, 224, 240);
+            border-top: 2px solid #fff;
+            display: none;
+            list-style: none;
+        }
+
+        .email-sug li {
+            height: 25px;
+            line-height: 25px;
+            padding-left: 10px;
+            color: darkgray;
+        }
+
+        /*伪类选择器和标签名称之间不能有空格*/
+        .email-sug li:hover {
+            background-color: pink;
+        }
+
+        .active {
+            background-color: rgb(147, 219, 216);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text" autofocus>
+        <ul id="email-sug-wrapper" class="email-sug"></ul>
+    </div>
+    <script>
+        let inputDom = document.getElementById("email-input");
+        let ul = document.getElementById("email-sug-wrapper");
+        let postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+        //设置一个index值，通过这个值的加减来实现各个列表项下标的增减，来改变当前选中状态
+        let nowSelectTipIndex = 0;
+        inputDom.oninput = function (e) {
+            if (!(e.keyCode == 40 || e.keyCode == 38 || e.keyCode == 13)) {
+                resetSelect();
+            }
+            addToUl();
+            judge();
+        }
+        ul.onclick = function (e) {
+            let ev = e || window.event;
+            let target = ev.target || ev.srcElement;
+            if (target.nodeName.toLowerCase() == 'li') {
+                hide();
+                inputDom.focus();
+                return inputDom.value = htmlDecode(target.innerHTML);//解码
+            }
+        }
+
+        //监听键盘
+        inputDom.onkeydown = function (e) {
+            let ev = e || window.event;
+            let arr = document.getElementsByTagName('li');
+            let index = arr.length - 1;
+            switch (ev.keyCode || en.which) {
+                case 38://向上
+                    //每次按键都需要清空所有的类名
+                    for (let i = 0; i < arr.length; i++) {
+                        arr[i].setAttribute("class", "")
+                    }
+                    nowSelectTipIndex--;
+                    if (nowSelectTipIndex < 0) {
+                        nowSelectTipIndex = index;
+                    }
+                    //给当前的项设置属性类名为active改变颜色
+                    arr[nowSelectTipIndex].setAttribute("class", "active");
+                    break;
+                case 40://向下
+                    for (let i = 0; i < arr.length; i++) {
+                        arr[i].setAttribute("class", "")
+                    }
+                    nowSelectTipIndex++;
+                    if (nowSelectTipIndex > index) {
+                        nowSelectTipIndex = 0;
+                    }
+                    arr[nowSelectTipIndex].setAttribute("class", "active");
+                    break;
+                case 13://回车
+                    let x = document.getElementsByClassName('active')[0];
+                    inputDom.value = x.innerHTML;
+                    hide();
+                    break;
+                case 27://esc全选输入文本框内容select()
+                    inputDom.select();
+                    break;
+                default:
+                    break;
+            }
+        }
+        //获取用户输入
+        function getInput() {
+            return inputDom.value.trim();
+        }
+        //判断是否生成新的数组
+        function postList() {
+            let userInput = getInput();
+            let newPostList = [];
+            //判断@是否在输入字符串的第一位，是的话直接返回已有的后缀列表为提示数组，不是则进行匹配
+            if (userInput.search("@") != 0) {
+                let len = userInput.search("@");
+                //只使用用户输入的@之后的字符串来拼接
+                let after = userInput.slice(len + 1, userInput.length);
+                //循环遍历原来的每一个数组项，进行匹配
+                for (let i = 0; i < postfixList.length; i++) {
+                    //匹配成功的条件就是@之后的的字符串在数组项中的下标为0
+                    if (postfixList[i].search(after) == 0) {
+                        //生成条件匹配的新数组，之后会遍历这个数组用每个项来拼接成提示数组
+                        newPostList.push(postfixList[i]);
+                    }
+                }
+                //若@后面没有字符或者新数组newpostlist为空
+                //（即@之后的字符不符合匹配规则，新的数组没有push进符合条件的数组项），就返回原来的postfixlist，
+                if (after == '' || newPostList == '') {
+                    return postfixList;
+                }
+                return newPostList;
+            } else {
+                return postfixList;
+            }
+        }
+        //根据输入内容和匹配生成提示数组
+        function remindContent() {
+            let val = htmlEncode(getInput());//转码
+            let content = [];
+            //如果@存在
+            if (val.indexOf("@") != -1) {
+                //截取用户输入@之前的字符
+                let before = val.slice(0, val.indexOf("@"));
+                //循环遍历处理后的@后半部分
+                for (let i = 0; i < postList().length; i++) {
+                    content[i] = before + "@" + postList()[i];
+                }
+            } else {
+                for (let i = 0; i < postfixList.length; i++) {
+                    content[i] = val + "@" + postfixList[i];
+                }
+            }
+            return content;
+        }
+        //将提示数组添加到列表中
+        function addToUl() {
+            let content = remindContent();
+            //先判断列表中是否已经存在列表项，存在则先删除之前的
+            while (ul.hasChildNodes()) {
+                ul.removeChild(ul.firstChild);
+            }
+            //循环遍历新的列表项，因为新的列表项个数不一定是五个
+            for (let i = 0; i < content.length; i++) {
+                let li = document.createElement('LI');
+                li.innerHTML = content[i];
+                ul.appendChild(li);
+            }
+            //初始化第一个列表项为选中状态变粉色
+            let list = document.getElementsByTagName('li');
+            list[0].setAttribute("class", "active");
+        }
+        //控制email-sug-wrapper的显示/隐藏状态
+        function judge() {
+            let txt = getInput();
+            if (!txt) {
+                hide();
+            } else {
+                display();
+            }
+        }
+        //隐藏提示框
+        function hide() {
+            ul.style.display = "none";
+        }
+        //显示提示框
+        function display() {
+            ul.style.display = "block";
+        }
+        //用浏览器内部装换器实现html转码
+        function htmlEncode(html) {
+            //1.先动态创建一个空的div容器
+            let temp = document.createElement('div');
+            //2.将要转换的字符串设置为这个元素的textContent或innerText
+            (temp.textContent != undefined) ? (temp.textContent = html) : (temp.innerText = html);
+            //3.返回这个元素的innerHTML，即得到经过HTML编码转换的字符串了
+            let output = temp.innerHTML;
+            temp = null;
+            return output;
+        }
+        //用浏览器内部转换器实现html解码
+        function htmlDecode(text) {
+            //1.首先动态创建一个容器标签div
+            let temp = document.createElement("div");
+            //2.将要转换的字符串设置为这个元素的innerHTML
+            temp.innerHTML = text;
+            //3.返回这个元素的textContent或者innerText
+            let output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        //重置选中状态
+        function resetSelect() {
+            nowSelectTipIndex = 0;
+        }
+
+    </script>
+</body>
+
+</html>
