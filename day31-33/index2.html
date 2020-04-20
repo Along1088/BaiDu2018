@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我是精明的小卖家（一）</title>
+    <script src="./sourceData.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table,
+        tr,
+        td {
+            border: darkgray solid 1px;
+        }
+
+        table th {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="region-radio-wrapper"></div>
+    <div id="product-radio-wrapper"></div>
+    <div id="table-wrapper">
+    </div>
+    <script>
+        let regionWrapper = document.getElementById("region-radio-wrapper");
+        let productWrapper = document.getElementById("product-radio-wrapper");
+        let tableWrapper = document.getElementById("table-wrapper");
+        function getCheckBox(checkboxName, data) {
+            //生成全选checkbox的html，给一个自定义属性表示为全选checkbox，比如checkbox - type="all"
+            let allSelect = document.createElement("input");
+            let text = document.createTextNode("全选");
+            allSelect.type = "checkbox";
+            allSelect.setAttribute("checkbox-type", "all");
+            checkboxName.appendChild(allSelect);
+            checkboxName.appendChild(text);
+
+            for (let index = 0; index < data.length; index++) {
+                let item = data[index];
+                let select = document.createElement("input");
+                let text = document.createTextNode(item);
+                select.type = "checkbox";
+                select.setAttribute("checkbox-type", "item")
+                checkboxName.appendChild(select);
+                checkboxName.appendChild(text);
+            }
+            checkboxName.onclick = function (e) {
+                var e = e || window.event;
+                if (e.target.nodeName.toLowerCase() == "input") {
+                    let checkboxType = e.target.getAttribute("checkbox-type");
+                    let len = checkboxName.childNodes.length;
+                    let count = 0;
+                    if (checkboxType == "all") {
+                        if (e.target.checked == true) {
+                            for (let i = 2; i < len; i++) {
+                                if (checkboxName.childNodes[i].nodeName.toLowerCase() == "input") {
+                                    checkboxName.childNodes[i].checked = true;
+                                }
+                            }
+                        }
+                        else {
+                            e.target.checked = true;
+                        }
+                    } else if (checkboxType == "item") {
+                        for (let i = 2; i < len; i++) {
+                            if (checkboxName.childNodes[i].checked == true) {
+                                count++;
+                            }
+                        }
+                        if (count == len / 2 - 1 && allSelect.checked == false) {
+                            allSelect.checked = true;
+                        } else if (count < len / 2 - 1 && count > 0) {
+                            allSelect.checked = false;
+                        } else if (count == 0) {
+                            e.target.checked = true;
+                        }
+                    }
+                }
+            }
+        }
+        let arr1 = ["华南", "华北", "华东"];
+        let arr2 = ["手机", "笔记本", "智能音箱"];
+        getCheckBox(regionWrapper, arr1);
+        getCheckBox(productWrapper, arr2);
+
+        function getData(checkboxName) {
+            let checkboxNamelen = checkboxName.childNodes.length;
+            let nameArr = [];
+            for (let i = 2; i < checkboxNamelen; i++) {
+                if (checkboxName.childNodes[i].checked == true) {
+                    nameArr.push(checkboxName.childNodes[i + 1].textContent);
+                }
+            }
+            return nameArr;
+        }
+        function getTableData() {
+            let selectRegion = getData(regionWrapper);
+            let selectProduct = getData(productWrapper);
+            let arr = new Array();
+            // console.log(selectRegion, selectProduct);
+            for (let i = 0; i < selectProduct.length; i++) {
+                for (let j = 0; j < selectRegion.length; j++) {
+                    for (let k = 0; k < sourceData.length; k++) {
+                        if (sourceData[k].region == selectRegion[j] && sourceData[k].product == selectProduct[i]) {
+                            arr.push(sourceData[k]);
+                        }
+                    }
+                }
+            }
+            console.log(arr);
+            return arr;
+        }
+        function renderTable() {
+            tableWrapper.removeChild(tableWrapper.firstChild);
+            let table = document.createElement("table");
+            let header = table.createTHead();
+            let row0 = header.insertRow(0);
+            tableWrapper.appendChild(table);
+            let headerArr = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+            for (let i = 0; i < headerArr.length; i++) {
+                row0.insertCell(row0.cells.length).innerHTML = headerArr[i];
+            }
+            let data = getTableData();
+            for (let i = 0; i < data.length; i++) {
+                let rows = table.insertRow(table.rows.length);
+                rows.insertCell(0).innerHTML = data[i].product;
+                rows.insertCell(1).innerHTML = data[i].region;
+                for (let j = 0; j < 12; j++) {
+                    rows.insertCell(rows.cells.length).innerHTML = data[i].sale[j];
+                }
+            }
+
+        }
+
+
+
+
+
+        regionWrapper.onchange = function () {
+            renderTable();
+        }
+        productWrapper.onchange = function () {
+            renderTable();
+        }
+
+
+    </script>
+</body>
+
+</html>

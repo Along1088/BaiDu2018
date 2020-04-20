@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我是精明的小卖家（一）</title>
+    <script src="./sourceData.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table,
+        tr,
+        td {
+            border: darkgray solid 1px;
+        }
+
+        table th {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <select id="region-select">
+        <option>华东</option>
+        <option>华南</option>
+        <option>华北</option>
+    </select>
+    <select id="product-select">
+        <option>手机</option>
+        <option>笔记本</option>
+        <option>智能音箱</option>
+    </select>
+    <div id="table-wrapper">
+    </div>
+    <script>
+        let regionSelect = document.getElementById("region-select");
+        let tableWrapper = document.getElementById("table-wrapper");
+        let productSelect = document.getElementById('product-select');
+
+        regionSelect.onchange = function () {
+            renderTable();
+            // newtableChange(getData());
+        }
+        productSelect.onchange = function () {
+            renderTable();
+        }
+        function getData() {
+            let regionText = regionSelect.value;
+            let productText = productSelect.value;
+            let arr = [];
+            for (let i = 0; i < sourceData.length; i++) {
+                if (sourceData[i].region == regionText && sourceData[i].product == productText) {
+                    arr.push(sourceData[i]);
+                }
+            }
+            console.log(arr);
+            return arr;
+        }
+        function renderTable() {
+            tableWrapper.removeChild(tableWrapper.firstChild);
+            let table = document.createElement("table");
+            let th = table.createTHead();
+            let row0 = th.insertRow(0);
+            let headTable = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+            for (let i = 0; i < headTable.length; i++) {
+                row0.insertCell(row0.cells.length).innerHTML = headTable[i];
+            }
+            let data = getData();
+            for (let i = 0; i < data.length; i++) {
+                let rows = table.insertRow(table.rows.length);
+                rows.insertCell(0).innerHTML = data[i].product;
+                rows.insertCell(1).innerHTML = data[i].region;
+                for (let j = 0; j < 12; j++) {
+                    rows.insertCell(rows.cells.lenth).innerHTML = data[i].sale[j];
+                }
+            }
+            tableWrapper.appendChild(table);
+        }
+    </script>
+</body>
+
+</html>
